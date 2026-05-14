@@ -38,3 +38,12 @@ app.use('/api/cf-rfq-blast', require('./routes/cf-rfq-blast'));
 app.use('/api/cf-tariff-sourcing', require('./routes/cf-tariff-sourcing'));
 app.use('/api/cf-dfm-agent', require('./routes/cf-dfm-agent'));
 app.use('/api/cf-port-disruption', require('./routes/cf-port-disruption'));
+
+// Deep features (audit 2026-05-14)
+app.use('/api/bom', require('./routes/bom'));
+app.use('/api/components', require('./routes/components'));
+app.use('/api/landed-cost', require('./routes/landed-cost'));
+app.use('/api/cm-lead-times', require('./routes/cm-lead-times'));
+app.use('/api/dfm', require('./routes/dfm'));
+app.use('/api/ecn', require('./routes/ecn'));
+app.use('/api/aql', require('./routes/aql'));

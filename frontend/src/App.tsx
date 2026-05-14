@@ -13,6 +13,13 @@ import SearchPage from './pages/SearchPage';
 import AuditLogPage from './pages/AuditLogPage';
 import ExportPage from './pages/ExportPage';
 import SampleDataPage from './pages/SampleDataPage';
+import BomPage from './pages/BomPage';
+import ComponentsPage from './pages/ComponentsPage';
+import LandedCostPage from './pages/LandedCostPage';
+import CmLeadTimePage from './pages/CmLeadTimePage';
+import DfmPage from './pages/DfmPage';
+import EcnPage from './pages/EcnPage';
+import AqlPage from './pages/AqlPage';
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
   const token = localStorage.getItem('token');
@@ -38,6 +45,13 @@ export default function App() {
           <Route path="audit" element={<AuditLogPage />} />
           <Route path="export" element={<ExportPage />} />
           <Route path="sample-data" element={<SampleDataPage />} />
+          <Route path="bom" element={<BomPage />} />
+          <Route path="components" element={<ComponentsPage />} />
+          <Route path="landed-cost" element={<LandedCostPage />} />
+          <Route path="cm-lead-times" element={<CmLeadTimePage />} />
+          <Route path="dfm" element={<DfmPage />} />
+          <Route path="ecn" element={<EcnPage />} />
+          <Route path="aql" element={<AqlPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
