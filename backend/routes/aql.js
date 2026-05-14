@@ -18,7 +18,7 @@
 //   POST   /api/aql/run                                         Compute decision: returns accept/reject given lot, AQL, defects.
 
 const router = require('express').Router();
-const { verifyToken } = require('../middleware/auth');
+const verifyToken = require("../middleware/auth");
 const db = require('../db');
 
 router.use(verifyToken);

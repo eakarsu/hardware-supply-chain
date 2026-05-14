@@ -23,7 +23,7 @@
 //   DELETE /api/ecn/:id                          Hard delete (draft only).
 
 const router = require('express').Router();
-const { verifyToken } = require('../middleware/auth');
+const verifyToken = require("../middleware/auth");
 const db = require('../db');
 
 router.use(verifyToken);

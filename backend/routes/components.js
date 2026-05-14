@@ -15,7 +15,7 @@
 //   GET    /api/components/search?q=stm32          Search MPN/manufacturer/description.
 
 const router = require('express').Router();
-const { verifyToken } = require('../middleware/auth');
+const verifyToken = require("../middleware/auth");
 const db = require('../db');
 
 router.use(verifyToken);
