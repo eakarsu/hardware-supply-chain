@@ -14,7 +14,7 @@
 //   POST   /api/bom/:id/clone?revision=B0            Clone all lines into a new header revision.
 
 const router = require('express').Router();
-const verifyToken = require('../middleware/auth');
+const { verifyToken } = require('../middleware/auth');
 const db = require('../db');
 
 router.use(verifyToken);

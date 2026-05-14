@@ -16,7 +16,7 @@
 //   GET    /api/cm-lead-times/slip-alerts?threshold=0.2    Lots that slipped >threshold (default 20%).
 
 const router = require('express').Router();
-const verifyToken = require('../middleware/auth');
+const { verifyToken } = require('../middleware/auth');
 const db = require('../db');
 
 router.use(verifyToken);

@@ -21,7 +21,7 @@
 //   POST   /api/dfm/run/:bomId                   Run a synthetic rule pass given inputs (returns + persists).
 
 const router = require('express').Router();
-const verifyToken = require('../middleware/auth');
+const { verifyToken } = require('../middleware/auth');
 const db = require('../db');
 
 router.use(verifyToken);

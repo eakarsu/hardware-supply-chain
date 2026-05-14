@@ -12,7 +12,7 @@
 //   GET    /api/landed-cost/compare/:bomId                 Compare all saved scenarios for a BOM with deltas.
 
 const router = require('express').Router();
-const verifyToken = require('../middleware/auth');
+const { verifyToken } = require('../middleware/auth');
 const db = require('../db');
 
 router.use(verifyToken);
