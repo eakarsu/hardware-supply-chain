@@ -47,3 +47,12 @@ app.use('/api/cm-lead-times', require('./routes/cm-lead-times'));
 app.use('/api/dfm', require('./routes/dfm'));
 app.use('/api/ecn', require('./routes/ecn'));
 app.use('/api/aql', require('./routes/aql'));
+
+// Supply Views — custom views (audit 2026-05-18)
+app.use('/api/custom-views', require('./routes/customViews'));
+
+// Health endpoint (mounted before any 404 handler)
+app.get('/api/health', (_req, res) => res.json({ ok: true, service: 'hardware-supply-chain', ts: new Date().toISOString() }));
+
+// 404 fallback for unknown /api routes (must remain last)
+app.use('/api', (req, res) => res.status(404).json({ error: 'not found', path: req.path }));

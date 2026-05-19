@@ -20,6 +20,7 @@ import CmLeadTimePage from './pages/CmLeadTimePage';
 import DfmPage from './pages/DfmPage';
 import EcnPage from './pages/EcnPage';
 import AqlPage from './pages/AqlPage';
+import CustomViewsPage from './pages/CustomViewsPage';
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
   const token = localStorage.getItem('token');
@@ -52,6 +53,7 @@ export default function App() {
           <Route path="dfm" element={<DfmPage />} />
           <Route path="ecn" element={<EcnPage />} />
           <Route path="aql" element={<AqlPage />} />
+          <Route path="custom-views" element={<CustomViewsPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,5 +1,5 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
-import { Cpu, LayoutDashboard, Package, Truck, ShoppingCart, GitBranch, CheckSquare, Factory, Sparkles, LogOut, Search, ScrollText, Download, Database, Layers, DollarSign, GitPullRequest, ShieldCheck } from 'lucide-react';
+import { Cpu, LayoutDashboard, Package, Truck, ShoppingCart, GitBranch, CheckSquare, Factory, Sparkles, LogOut, Search, ScrollText, Download, Database, Layers, DollarSign, GitPullRequest, ShieldCheck, Eye } from 'lucide-react';
 
 const navItems = [
   { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
@@ -22,6 +22,7 @@ const deepItems = [
 ];
 
 const utilityItems = [
+  { to: '/custom-views', icon: Eye, label: 'Supply Views' },
   { to: '/search', icon: Search, label: 'Search & Filter' },
   { to: '/export', icon: Download, label: 'CSV Export' },
   { to: '/audit', icon: ScrollText, label: 'Audit Log' },
