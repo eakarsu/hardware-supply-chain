@@ -1,9 +1,11 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
-import { Cpu, LayoutDashboard, Package, Truck, ShoppingCart, GitBranch, CheckSquare, Factory, Sparkles, LogOut, Search, ScrollText, Download, Database } from 'lucide-react';
+import { Cpu, LayoutDashboard, Package, Truck, ShoppingCart, GitBranch, CheckSquare, Factory, Sparkles, LogOut, Search, ScrollText, Download, Database, Layers, DollarSign, GitPullRequest, ShieldCheck, Eye } from 'lucide-react';
 
 const navItems = [
   { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
   { to: '/parts', icon: Package, label: 'Parts' },
+  { to: '/components', icon: Cpu, label: 'Components' },
+  { to: '/bom', icon: Layers, label: 'BOMs' },
   { to: '/suppliers', icon: Truck, label: 'Suppliers' },
   { to: '/orders', icon: ShoppingCart, label: 'Orders' },
   { to: '/iterations', icon: GitBranch, label: 'Design Iterations' },
@@ -11,7 +13,16 @@ const navItems = [
   { to: '/manufacturers', icon: Factory, label: 'Manufacturers' },
 ];
 
+const deepItems = [
+  { to: '/landed-cost', icon: DollarSign, label: 'Landed Cost' },
+  { to: '/cm-lead-times', icon: Factory, label: 'CM Lead-Times' },
+  { to: '/dfm', icon: ShieldCheck, label: 'DFM Checks' },
+  { to: '/ecn', icon: GitPullRequest, label: 'ECN / PPAP' },
+  { to: '/aql', icon: CheckSquare, label: 'AQL Plans' },
+];
+
 const utilityItems = [
+  { to: '/custom-views', icon: Eye, label: 'Supply Views' },
   { to: '/search', icon: Search, label: 'Search & Filter' },
   { to: '/export', icon: Download, label: 'CSV Export' },
   { to: '/audit', icon: ScrollText, label: 'Audit Log' },
@@ -63,6 +74,19 @@ export default function Layout() {
               <Sparkles className="w-4 h-4" />
               AI Intelligence
             </NavLink>
+          </div>
+
+          <div className="pt-3 mt-3 border-t border-gray-800">
+            <p className="text-xs text-gray-600 px-3 pb-1 uppercase tracking-wider">Deep Features</p>
+            {deepItems.map(({ to, icon: Icon, label }) => (
+              <NavLink key={to} to={to}
+                className={({ isActive }) =>
+                  `flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${isActive ? 'bg-orange-600 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-800'}`
+                }>
+                <Icon className="w-4 h-4" />
+                {label}
+              </NavLink>
+            ))}
           </div>
 
           <div className="pt-3 mt-3 border-t border-gray-800">
