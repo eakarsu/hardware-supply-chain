@@ -20,8 +20,6 @@ app.use('/api/audit', require('./routes/audit'));
 app.use('/api/admin', require('./routes/sample_data'));
 app.use('/api/dashboard', require('./routes/dashboard'));
 
-const PORT = process.env.PORT || 3009;
-app.listen(PORT, () => console.log(`HardwareOS API running on port ${PORT}`));
 app.use('/api/gap-ai-shenzhen-vs-us', require('./routes/gap-ai-shenzhen-vs-us'));
 app.use('/api/gap-ai-factory-handoff', require('./routes/gap-ai-factory-handoff'));
 app.use('/api/gap-ai-dfm-advisor', require('./routes/gap-ai-dfm-advisor'));
@@ -50,9 +48,16 @@ app.use('/api/aql', require('./routes/aql'));
 
 // Supply Views — custom views (audit 2026-05-18)
 app.use('/api/custom-views', require('./routes/customViews'));
+app.use('/api/golden-sample-control', require('./routes/goldenSampleControl'));
+
+// Iteration-speed dashboards (Apply pass 7 — 2026-05-21)
+app.use('/api/iteration-speed', require('./routes/iteration-speed'));
 
 // Health endpoint (mounted before any 404 handler)
 app.get('/api/health', (_req, res) => res.json({ ok: true, service: 'hardware-supply-chain', ts: new Date().toISOString() }));
 
 // 404 fallback for unknown /api routes (must remain last)
 app.use('/api', (req, res) => res.status(404).json({ error: 'not found', path: req.path }));
+
+const PORT = process.env.PORT || 3009;
+app.listen(PORT, () => console.log(`HardwareOS API running on port ${PORT}`));

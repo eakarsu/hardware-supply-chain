@@ -84,6 +84,13 @@ export const api = {
   // Dashboard
   getDashboardStats: () => apiFetch('/dashboard/stats'),
 
+  // Iteration Speed (Apply pass 7)
+  getIterationSpeed: () => apiFetch('/iteration-speed/summary'),
+  addIterationBaseline: (data: unknown) =>
+    apiFetch('/iteration-speed/baseline', { method: 'POST', body: JSON.stringify(data) }),
+  deleteIterationBaseline: (id: number) =>
+    apiFetch(`/iteration-speed/baseline/${id}`, { method: 'DELETE' }),
+
   // Audit log
   getAuditLog: (params: Record<string, string> = {}) => apiFetch('/audit?' + new URLSearchParams(params).toString()),
   logAudit: (data: unknown) => apiFetch('/audit', { method: 'POST', body: JSON.stringify(data) }),

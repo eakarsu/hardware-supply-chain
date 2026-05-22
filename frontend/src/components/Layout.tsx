@@ -1,5 +1,5 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
-import { Cpu, LayoutDashboard, Package, Truck, ShoppingCart, GitBranch, CheckSquare, Factory, Sparkles, LogOut, Search, ScrollText, Download, Database, Layers, DollarSign, GitPullRequest, ShieldCheck, Eye } from 'lucide-react';
+import { Cpu, LayoutDashboard, Package, Truck, ShoppingCart, GitBranch, CheckSquare, Factory, Sparkles, LogOut, Search, ScrollText, Download, Database, Layers, DollarSign, GitPullRequest, ShieldCheck, Eye, Zap, Anchor, Send, Activity, Globe2, Upload, Receipt, ClipboardCheck, Smartphone, CreditCard, QrCode, Plane, FileBox, Wrench } from 'lucide-react';
 
 const navItems = [
   { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
@@ -14,11 +14,13 @@ const navItems = [
 ];
 
 const deepItems = [
+  { to: '/iteration-speed', icon: Zap, label: 'Iteration Speed' },
   { to: '/landed-cost', icon: DollarSign, label: 'Landed Cost' },
   { to: '/cm-lead-times', icon: Factory, label: 'CM Lead-Times' },
   { to: '/dfm', icon: ShieldCheck, label: 'DFM Checks' },
   { to: '/ecn', icon: GitPullRequest, label: 'ECN / PPAP' },
   { to: '/aql', icon: CheckSquare, label: 'AQL Plans' },
+  { to: '/golden-sample-control', icon: ClipboardCheck, label: 'Golden Samples' },
 ];
 
 const utilityItems = [
@@ -27,6 +29,28 @@ const utilityItems = [
   { to: '/export', icon: Download, label: 'CSV Export' },
   { to: '/audit', icon: ScrollText, label: 'Audit Log' },
   { to: '/sample-data', icon: Database, label: 'Sample Data' },
+];
+
+const iterationSpeedItems = [
+  { to: '/cf/shenzhen-tracker', icon: Activity, label: 'Shenzhen Tracker' },
+  { to: '/cf/dfm-agent', icon: Zap, label: 'DFM Agent' },
+  { to: '/cf/rfq-blast', icon: Send, label: 'Auto-RFQ Blast' },
+  { to: '/cf/tariff-sourcing', icon: Globe2, label: 'Tariff Sourcing' },
+  { to: '/cf/port-disruption', icon: Anchor, label: 'Port Disruption' },
+];
+
+const gapItems = [
+  { to: '/gap/shenzhen-vs-us', icon: Activity, label: 'Shenzhen vs US' },
+  { to: '/gap/factory-handoff', icon: Factory, label: 'Factory Handoff' },
+  { to: '/gap/dfm-advisor', icon: Wrench, label: 'DFM Advisor' },
+  { to: '/gap/customs-tariff', icon: Receipt, label: 'Customs / Tariff' },
+  { to: '/gap/incoming-inspection', icon: ClipboardCheck, label: 'Incoming Inspect' },
+  { to: '/gap/cad-upload', icon: Upload, label: 'CAD Upload' },
+  { to: '/gap/shipping-tracking', icon: Plane, label: 'Shipping Tracking' },
+  { to: '/gap/payments-lc', icon: CreditCard, label: 'Payments / LC' },
+  { to: '/gap/mobile-intake', icon: Smartphone, label: 'Mobile Intake' },
+  { to: '/gap/edi-portal', icon: FileBox, label: 'EDI Portal' },
+  { to: '/gap/qr-tracking', icon: QrCode, label: 'QR Tracking' },
 ];
 
 export default function Layout() {
@@ -79,6 +103,32 @@ export default function Layout() {
           <div className="pt-3 mt-3 border-t border-gray-800">
             <p className="text-xs text-gray-600 px-3 pb-1 uppercase tracking-wider">Deep Features</p>
             {deepItems.map(({ to, icon: Icon, label }) => (
+              <NavLink key={to} to={to}
+                className={({ isActive }) =>
+                  `flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${isActive ? 'bg-orange-600 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-800'}`
+                }>
+                <Icon className="w-4 h-4" />
+                {label}
+              </NavLink>
+            ))}
+          </div>
+
+          <div className="pt-3 mt-3 border-t border-gray-800">
+            <p className="text-xs text-gray-600 px-3 pb-1 uppercase tracking-wider">Iteration Speed</p>
+            {iterationSpeedItems.map(({ to, icon: Icon, label }) => (
+              <NavLink key={to} to={to}
+                className={({ isActive }) =>
+                  `flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${isActive ? 'bg-orange-600 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-800'}`
+                }>
+                <Icon className="w-4 h-4" />
+                {label}
+              </NavLink>
+            ))}
+          </div>
+
+          <div className="pt-3 mt-3 border-t border-gray-800">
+            <p className="text-xs text-gray-600 px-3 pb-1 uppercase tracking-wider">Gap Features</p>
+            {gapItems.map(({ to, icon: Icon, label }) => (
               <NavLink key={to} to={to}
                 className={({ isActive }) =>
                   `flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${isActive ? 'bg-orange-600 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-800'}`

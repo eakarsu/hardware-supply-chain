@@ -45,6 +45,65 @@ Data. Smoke-tested 200 on port 3009 with admin@demo.com/demo123;
 401 without bearer. See
 `/Users/erolakarsu/projects/_AUDIT/apply3_logs/dashboard_hardware-supply-chain.md`.
 
+## Apply pass 7 (full backlog implementation)
+
+Date: 2026-05-21. Wired all 16 orphaned scaffolded pages (Cf* and Gap*) and
+added a new mission-critical Iteration Speed dashboard.
+
+Backlog items addressed:
+- 5 Cf* iteration-speed pages (DFM Agent, Port Disruption, Auto-RFQ Blast,
+  Shenzhen Tracker, Tariff Sourcing) — backend routes existed since pass 4
+  but pages had no nav entry or App.tsx route.
+- 11 Gap* feature pages (Shenzhen vs US, Factory Handoff, DFM Advisor,
+  Customs/Tariff, Incoming Inspection, CAD Upload, Shipping Tracking,
+  Payments/LC, Mobile Intake, EDI Portal, QR Tracking) — same situation.
+- New Iteration Speed dashboard (`/iteration-speed`,
+  `GET /api/iteration-speed/summary`, `POST/DELETE /api/iteration-speed/baseline`)
+  — pure SQL aggregator over `iterations` + new `iteration_speed_baselines`
+  table; reports avg/median/min/max loop hours, by-engineer leaderboard,
+  fastest-iterating parts, 180-day weekly trend, and team-vs-Shenzhen /
+  team-vs-US multipliers (Shenzhen 24h, US 168h reference baselines from
+  description.txt).
+
+Files added:
+- backend/routes/iteration-speed.js
+- frontend/src/pages/IterationSpeedPage.tsx
+
+Files modified:
+- backend/server.js — moved `app.listen` to bottom; mounted iteration-speed
+  router BEFORE the 404 handler (previous Cf/Gap mounts were after
+  `app.listen`, technically working but bad-pattern; now all routes are
+  mounted in a single block before the 404).
+- frontend/src/App.tsx — added 17 new `<Route>` entries (16 Cf/Gap + 1
+  iteration-speed) inside the Layout-protected tree.
+- frontend/src/components/Layout.tsx — added two new sidebar groups
+  ("Iteration Speed" with 5 Cf items, "Gap Features" with 11 Gap items),
+  added `/iteration-speed` to the Deep Features group, and pulled in the
+  required lucide icons.
+- frontend/src/api.ts — added `getIterationSpeed`, `addIterationBaseline`,
+  `deleteIterationBaseline` client methods.
+
+Schema:
+- `iteration_speed_baselines (id, region, part_category, baseline_hours,
+  source, created_at)` — created idempotently with CREATE TABLE IF NOT
+  EXISTS on first call.
+
+Skipped per task constraints:
+- NEEDS-CREDS: AI endpoints already return graceful "AI unavailable" string
+  when OPENROUTER_API_KEY is missing — no change needed.
+- TOO-RISKY: TimelineView/Codex pages route outside Layout (custom chrome)
+  — left intact; pre-existing TS6133 warnings in those files predate this
+  pass.
+
+Syntax: `node --check backend/server.js` and
+`node --check backend/routes/iteration-speed.js` both clean.
+`tsc --noEmit` introduces 0 new errors (3 pre-existing TS6133 warnings
+unrelated to this pass).
+
+Status: COMPLETE.
+
+---
+
 Sample-prefill buttons added to all 9 tabs of `AICenterPage.tsx`
 (2-3 per tab, real hardware data: H100/EPYC/Xeon/DDR5, TSMC/Foxconn/
 Pegatron/Wistron/Murata/Samsung, Taiwan-Strait + China-export-control
