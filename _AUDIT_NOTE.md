@@ -7,7 +7,7 @@ Last updated: 2026-05-07
 - Frontend: React + Vite + Tailwind (port 5173)
 - Auth: JWT bearer; users table uses `password` column (NOT `password_hash`)
 - AI: OpenRouter (env `OPENROUTER_API_KEY`, optional model `OPENROUTER_MODEL`)
-- Login: admin@demo.com / demo123
+- Login: provisioned through `backend/scripts/provision-admin.js`; no repository credential
 
 ## Routes (backend/routes)
 - auth, parts, suppliers, orders, iterations, quality, manufacturers
@@ -41,7 +41,7 @@ icon) and post-login landing at `/dashboard`. Backend
 suppliers, manufacturers, open_orders, quality_issues,
 recent_iterations[30d], low_stock, totals) plus 10 latest `audit_log`
 entries. Quick actions link to AI Center, Parts, Suppliers, Sample
-Data. Smoke-tested 200 on port 3009 with admin@demo.com/demo123;
+Data. Historical smoke test returned 200 with the then-current demo login;
 401 without bearer. See
 `/Users/erolakarsu/projects/_AUDIT/apply3_logs/dashboard_hardware-supply-chain.md`.
 

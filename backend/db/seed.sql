@@ -1,9 +1,6 @@
 -- Seed data for HardwareOS
 
--- Users
-INSERT INTO users (email, password, name) VALUES
-('admin@demo.com', '$2b$10$e4dPQpe3XIDluCZCv3b3iu/H/3f816tgim6l5ly5k7pChHG235Dey', 'Admin User')
-ON CONFLICT (email) DO NOTHING;
+-- Authentication identities are provisioned through scripts/provision-admin.js.
 
 -- Parts
 INSERT INTO parts (name, part_number, description, material, category, unit_cost, weight_grams, lead_time_days, status, in_stock, reorder_threshold) VALUES

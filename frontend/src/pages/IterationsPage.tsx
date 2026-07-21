@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api';
 import { Iteration, Part } from '../types';
-import { Plus, Search, GitBranch, CheckCircle, XCircle, Clock, X, Edit2, Trash2 } from 'lucide-react';
+import { Plus, Search, CheckCircle, XCircle, Clock, X, Edit2, Trash2 } from 'lucide-react';
 
 function IterationForm({ iteration, parts, onSave, onClose }: { iteration?: Iteration | null; parts: Part[]; onSave: () => void; onClose: () => void }) {
   const [form, setForm] = useState({

@@ -1,0 +1,13 @@
+title = "hardware-supply-chain secret scan"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Public distributor catalog SKUs in the non-executable seed reference"
+regexTarget = "match"
+regexes = [
+  '''541-1\.00KHCT-ND''',
+  '''SI4435BDY-T1-GE3CT-ND''',
+  '''ATMEGA328P-AURCT-ND''',
+]
